@@ -1,0 +1,15 @@
+#!/bin/bash
+for ex in ex*
+do
+  echo "========================================"
+  echo "Ex $ex"
+
+  (cd $ex;
+    for task in task*
+    do
+      echo -n "Task $task"
+      (cd $task; javac *.java; echo " - compiled";) 2>&1
+    done
+    echo "----------------------------------------"
+  ) 2>&1
+done | less
